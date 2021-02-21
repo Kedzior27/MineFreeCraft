@@ -10,14 +10,138 @@
                 </canvas>
                </div>
 
+               <div class="card"> <div class="icon"><img src="https://api.minetools.eu/favicon/tws-mc.com/25565" ondragstart="return false;"></div><div class="header">
+                <div class="image"> <img src="https://cdn.discordapp.com/attachments/363070725927469068/448906065082449940/2018-05-23_18.52.03.png" ondragstart="return false;" alt="" /> </div>
+                <h2></h2>
+                <h3>The Wooden Spoon SMP</h3>
+                </div>
+                <div id="rest"></div>
+              </div>
+              
+
                <script>
                 var c = document.getElementById("tytul");
                 var ctx = c.getContext("2d");
                 ctx.font = "30px Arial";
                 ctx.strokeText("MineFreeCraft", 10, 50);
+
+                var url = "https://api.minetools.eu/ping/tws-mc.com";
+$.getJSON(url, function(r) {
+ if(r.error){
+    $('h2').html('Server Offline');
+    $('#rest').html('Players Online: 0');
+   return false;
+       } else {
+      $('h2').html('tws-mc.com');  
+      $('#rest').html('Players Online: '+r.players.online+'/'+r.players.max);
+ }   
+});
+
+
+
                 </script>
                 <style>
                     .csscenter{text-align: center;}
+
+                    body,html{
+  height:100%;
+  font-family: 'Roboto Mono',  monospace;
+  font-size:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+body:before{
+  content:""; width:100%; height:100%; background:rgba(0,0,0,0.8);
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:10
+}
+h1,h2{
+  font-weight:400;
+  letter-spacing:-2px
+}
+.card {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  width: 200px;
+  min-width: 300px;
+  background: #d9edf7;
+  border-radius: 5px;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.3);
+  -webkit-animation: fadein 2s;
+          animation: fadein 2s;
+  overflow:hidden;
+  z-index: 999;
+}
+
+.header {
+  position: relative;
+  z-index:1;
+  width: 100%;
+  height: 180px;
+  border-bottom: 3px solid #31708f;
+  overflow: hidden;
+}
+.card img{
+  width:100%;
+  transition: all 1s ease;
+  z-index:0
+}
+.image {
+  width: 107%;
+  height: 180px;
+  overflow:hidden;
+}
+
+.image:hover img{
+  -webkit-transform: scale(1.2, 1.2);
+          transform: scale(1.2, 1.2);
+}
+
+.header h2{
+  position:absolute;
+  bottom:130px;
+  width:100%;
+  padding:0 10px;
+  color:#337ab7;
+  text-shadow: 2px 2px #000;
+  font-weight: bold;
+}
+.header h3{
+  position:absolute;
+  bottom:-15px;
+  padding:0 10px;
+  color:#337ab7;
+  text-shadow: 1px 1px #000;
+}
+.header h3 .status{
+color: red;
+}
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow:hidden;
+  border:3px solid #31708f;
+  z-index:9;
+  background-color:#337ab791;
+}
+.icon img{
+  background-image:url("https://api.minetools.eu/favicon/tws-mc.com/25565") no-repeat;
+  
+}
+#rest{
+  padding:10px 15px;
+  line-height:30px;
+  color:#337ab7;
+  font-weight: bold;
+}
                 </style>
 
     </body>
